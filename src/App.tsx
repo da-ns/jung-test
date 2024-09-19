@@ -2,7 +2,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import About from "./pages/About";
 import Test from "./pages/Test";
 
-export default function App() {
+const App = () => {
     return (
         <Router>
             <div>
@@ -30,3 +30,5 @@ export default function App() {
         </Router>
     );
 }
+
+export default App
