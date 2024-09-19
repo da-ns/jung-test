@@ -1,0 +1,40 @@
+{
+  "name": "jung-test",
+  "version": "1.0.0",
+  "description": "Psychological test of Carl Jung",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/da-ns/jung-test.git"
+  },
+  "keywords": [
+    "psy",
+    "test",
+    "jung",
+    "16associations"
+  ],
+  "author": "da-ns",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/da-ns/jung-test/issues"
+  },
+  "homepage": "https://github.com/da-ns/jung-test#readme",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.7",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.6"
+  }
+}
