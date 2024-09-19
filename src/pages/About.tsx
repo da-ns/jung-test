@@ -1,3 +1,5 @@
+import ButtonLink from "../components/ButtonLink.tsx";
+
 const About = () => {
     return(
         <div>
@@ -31,6 +33,10 @@ const About = () => {
                 also paved the way for further research into the dynamics of the unconscious mind. Clinicians
                 and researchers continue to explore the implications of association techniques in understanding
                 human behavior and mental processes, solidifying Jung’s legacy within psychological science.</p>
+
+            <ButtonLink href="/test">
+                Run test
+            </ButtonLink>
         </div>
     );
 }
