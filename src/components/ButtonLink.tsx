@@ -1,14 +1,15 @@
 import * as React from "react";
+import {Link} from "react-router-dom";
 
 type ButtonLinkProps = {
     children: React.ReactNode;
+    to: string;
     className?: string;
-    href?: string;
 }
 
-const ButtonLink = ({children, className, href} : ButtonLinkProps) => {
+const ButtonLink = ({children, to, className} : ButtonLinkProps) => {
     return (
-        <a href={href} className={
+        <Link to={to} className={
                     `px-4 py-2 bg-indigo-500 
                      border border-transparent rounded-md 
                      font-semibold text-xs text-white uppercase tracking-widest 
@@ -17,7 +18,7 @@ const ButtonLink = ({children, className, href} : ButtonLinkProps) => {
                      transition duration-150 ` + className
                 }>
             {children}
-        </a>
+        </Link>
     )
 }
 

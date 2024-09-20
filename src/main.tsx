@@ -8,6 +8,7 @@ import App from "./App";
 import About from "./pages/About";
 import Test from "./pages/Test";
 import PageNotFound from "./pages/PageNotFound.tsx";
+import Home from "./pages/Home.tsx";
 
 const container: HTMLElement | null = document.getElementById("root");
 
@@ -19,6 +20,10 @@ if (container != null) {
                 <App/>
             ),
             children: [
+                {
+                    path: "",
+                    element: <Home/>,
+                },
                 {
                     path: "about",
                     element: <About/>,

@@ -6,7 +6,7 @@ const App = () => {
         <div className="h-full flex flex-col items-center">
             <Navigation/>
 
-            <div className="flex-grow">
+            <div className="flex-grow mt-10">
                 <Outlet />
             </div>
 

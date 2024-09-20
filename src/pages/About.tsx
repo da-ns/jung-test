@@ -43,12 +43,10 @@ const About = () => {
                 human behavior and mental processes, solidifying Jung’s legacy within psychological science.</p>
 
             <div className="flex m-10 justify-center">
-                <ButtonLink href="/test">
+                <ButtonLink to="/test">
                     Run test
                 </ButtonLink>
             </div>
-
-            <HorizontalLine />
         </div>
     );
 }
