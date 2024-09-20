@@ -9,6 +9,8 @@ import About from "./pages/About";
 import Test from "./pages/Test";
 import PageNotFound from "./pages/PageNotFound.tsx";
 import Home from "./pages/Home.tsx";
+import Start from "./components/steps/Start.tsx";
+import Issue from "./components/steps/Issue.tsx";
 
 const container: HTMLElement | null = document.getElementById("root");
 
@@ -31,15 +33,24 @@ if (container != null) {
                 {
                     path: "test",
                     element: <Test/>,
+                    children: [
+                        {
+                            path: "",
+                            element: <Start/>
+                        },
+                        {
+                            path: "issue",
+                            element: <Issue/>
+                        }
+                    ]
                 },
-
+                {
+                    path: "*",
+                    element: (
+                        <PageNotFound/>
+                    )
+                }
             ]
-        },
-        {
-            path: "*",
-            element: (
-                <PageNotFound/>
-            )
         }
     ]);
 
