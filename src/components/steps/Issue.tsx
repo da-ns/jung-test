@@ -1,9 +1,19 @@
 import ButtonLink from "../ButtonLink.tsx";
 import {useLocation} from "react-router-dom";
-import TextInput from "../TextInput.tsx";
+import TextInput from "../TextInput";
+import useIssue from "../../context/IssueContext";
+import {ChangeEvent} from "react";
+import {IssueContextType} from "../../@types/IIssue";
 
 const Issue = () => {
     const url = useLocation();
+
+    const { issue, saveIssue }: IssueContextType = useIssue();
+
+    const onChangeHandler = (event:  ChangeEvent<HTMLInputElement>) => {
+        saveIssue({ fact: (event.target as HTMLInputElement).value });
+        console.log(issue);
+    };
 
     return (
         <>
@@ -13,7 +23,9 @@ const Issue = () => {
                 a simple formulation consisting of a minimum of words.
             </p>
 
-            <TextInput placeholder="For example, “relationship with mom”, “job search”, “fatigue”..."/>
+            <TextInput
+                onChange={onChangeHandler}
+                placeholder="For example, “relationship with mom”, “job search”, “fatigue”..."/>
 
             <div className="flex m-10 justify-center">
                 <ButtonLink to={url.pathname}>Next</ButtonLink>
