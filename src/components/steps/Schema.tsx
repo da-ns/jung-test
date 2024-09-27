@@ -19,7 +19,7 @@ const Schema = () => {
         const words = getLevelItems(level);
 
         return (
-            <div className={"flex flex-col h-full justify-around px-4"}>
+            <div className={"flex flex-col h-full justify-around px-4 items-center"}>
                 {words.map((word, index) => {
                     return <Highlight key={index}>{word}</Highlight>
                 })}
@@ -35,7 +35,7 @@ const Schema = () => {
 
     return (
         <>
-            <div className={"text-center-center text-2xl"}>
+            <div className={"text-center text-2xl"}>
                 Schema of associative series on request:
             </div>
 
