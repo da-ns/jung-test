@@ -1,19 +1,29 @@
-import ButtonLink from "../ButtonLink.tsx";
-import {useLocation} from "react-router-dom";
 import TextInput from "../TextInput";
 import useIssue from "../../context/IssueContext";
-import {ChangeEvent} from "react";
-import {IssueContextType} from "../../@types/IIssue";
+import Button from "../Button.tsx";
+import {ChangeEvent, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+import {IssueContextType} from "../../@types/IssueContextType";
 
 const Issue = () => {
-    const url = useLocation();
+    const navigate = useNavigate();
+    const { issue, setFact }: IssueContextType = useIssue();
 
-    const { issue, saveIssue }: IssueContextType = useIssue();
-
-    const onChangeHandler = (event:  ChangeEvent<HTMLInputElement>) => {
-        saveIssue({ fact: (event.target as HTMLInputElement).value });
-        console.log(issue);
+    const handleChangeFact = (event: ChangeEvent<HTMLInputElement>) : void => {
+        issue.fact = (event.target as HTMLInputElement).value;
     };
+
+    const handleClickNext = () => {
+        if (issue.fact != null) {
+            setFact(issue.fact);
+        }
+    };
+
+    useEffect(() => {
+        if (issue.fact != null) {
+            navigate("/test/association");
+        }
+    }, [issue]);
 
     return (
         <>
@@ -24,11 +34,12 @@ const Issue = () => {
             </p>
 
             <TextInput
-                onChange={onChangeHandler}
+                value={issue.fact}
+                onChange={handleChangeFact}
                 placeholder="For example, “relationship with mom”, “job search”, “fatigue”..."/>
 
             <div className="flex m-10 justify-center">
-                <ButtonLink to={url.pathname}>Next</ButtonLink>
+                <Button onClick={handleClickNext}>Next</Button>
             </div>
         </>
     )

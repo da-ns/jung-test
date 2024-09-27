@@ -1,8 +1,12 @@
-import ButtonLink from "../ButtonLink.tsx";
-import {useLocation} from "react-router-dom";
+import Button from "../Button.tsx";
+import {useNavigate} from "react-router-dom";
 
 const Start = () => {
-    const url = useLocation();
+    const navigate = useNavigate();
+
+    const handleClickReady = () => {
+        navigate("/test/issue");
+    };
 
     return (
         <>
@@ -10,7 +14,7 @@ const Start = () => {
                 next 15-20 minutes. Relax.</p>
 
             <div className="flex m-10 justify-center">
-                <ButtonLink to={url.pathname + "/issue"}>I'm ready</ButtonLink>
+                <Button onClick={handleClickReady}>I'm ready</Button>
             </div>
         </>
     )

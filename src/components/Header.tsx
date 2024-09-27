@@ -11,6 +11,6 @@ const Header = ({children, className} : HeaderProps) => {
             {children}
         </h1>
     )
-}
+};
 
 export default Header
