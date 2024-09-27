@@ -41,8 +41,6 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
                     fact: word,
                 };
             case IssueActionType.SET_ASSOCIATION:
-                console.log("case IssueActionType.SET_ASSOCIATION");
-
                 state.associatoins[index] = {
                     word: word,
                     level: level,
