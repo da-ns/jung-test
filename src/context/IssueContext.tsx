@@ -14,11 +14,13 @@ export const IssueContext = createContext<IssueContextType>({
     issue: EMPTY_ISSUE,
     setFact: () => {},
     setAssociation: () => {},
+    reset: () => {}
 });
 
 enum IssueActionType {
     SET_FACT = 'SET_FACT',
     SET_ASSOCIATION = 'SET_ASSOCIATION',
+    RESET = 'RESET',
 }
 
 export interface IssueAction {
@@ -50,6 +52,10 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
                     ...state,
                     associatoins: state.associatoins,
                 };
+            case IssueActionType.RESET:
+                return {
+                    ...EMPTY_ISSUE
+                };
             default:
                 return state;
         }
@@ -62,12 +68,15 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
     };
 
     const setAssociation = (association: string, index: number, level: number) => {
-        console.log("run setAssociation!");
         dispatch({type: IssueActionType.SET_ASSOCIATION, word: association, index: index, level: level});
     };
 
+    const reset = () => {
+        dispatch({type: IssueActionType.RESET, word: "", index: 0, level: 0});
+    };
+
     return (
-        <IssueContext.Provider value={{ issue, setFact, setAssociation }}>
+        <IssueContext.Provider value={{ issue, setFact, setAssociation, reset }}>
             {prop.children}
         </IssueContext.Provider>
     );

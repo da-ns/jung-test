@@ -1,12 +1,20 @@
 import Button from "../Button.tsx";
 import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import {IssueContextType} from "../../@types/IssueContextType";
+import useIssue from "../../context/IssueContext.tsx";
 
 const Start = () => {
     const navigate = useNavigate();
+    const { reset }: IssueContextType = useIssue();
 
     const handleClickReady = () => {
         navigate("/test/issue");
     };
+
+    useEffect(() => {
+        reset();
+    }, []);
 
     return (
         <>
