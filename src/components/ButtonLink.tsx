@@ -11,6 +11,7 @@ const ButtonLink = ({children, to, className} : ButtonLinkProps) => {
     return (
         <Link to={to} className={
                     `px-4 py-2 bg-indigo-500 
+                     cursor-pointer
                      border border-transparent rounded-md 
                      font-semibold text-xs text-white uppercase tracking-widest whitespace-nowrap 
                      hover:bg-indigo-600 active:bg-indigo-200 
