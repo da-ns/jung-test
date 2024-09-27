@@ -21,12 +21,12 @@ const Association = () => {
     };
 
     const handleClickNext = () : void => {
-        if (index == null) {
+        if (index === null) {
             console.error("Current association index is null.");
             return;
         }
 
-        if (word != "") {
+        if (word !== "") {
             setAssociation(word, index, calculateLevel(index));
         }
     };
@@ -43,7 +43,7 @@ const Association = () => {
     const findFreeIndex = (): number | null => {
         const nextFreeIndex: number = issue
             .associatoins
-            .filter((item) => item != null)
+            .filter((item) => item !== null)
             .length;
 
         if (nextFreeIndex < ASSOCIATIONS_COUNT) {
@@ -52,6 +52,7 @@ const Association = () => {
 
         return null;
     };
+
     const calculateLevel = (index: number): number => {
         if (index >= 0 && index <= 15) return 0;
         if (index >= 16 && index <= 23) return 1;
