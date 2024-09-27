@@ -5,13 +5,11 @@ import {IssueContextType} from "../@types/IssueContextType";
 
 const ASSOCIATIONS_COUNT = 31;
 
-export const EMPTY_ISSUE = {
-    fact: null,
-    associatoins: new Array<IAssociation>(ASSOCIATIONS_COUNT)
-};
-
 export const IssueContext = createContext<IssueContextType>({
-    issue: EMPTY_ISSUE,
+    issue: {
+        fact: null,
+        associatoins: new Array<IAssociation>(ASSOCIATIONS_COUNT)
+    },
     setFact: () => {},
     setAssociation: () => {},
     reset: () => {}
@@ -52,14 +50,18 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
                 };
             case IssueActionType.RESET:
                 return {
-                    ...EMPTY_ISSUE
+                    fact: null,
+                    associatoins: new Array<IAssociation>(ASSOCIATIONS_COUNT)
                 };
             default:
                 return state;
         }
     };
 
-    const [issue, dispatch] = useReducer(issueReducer, EMPTY_ISSUE);
+    const [issue, dispatch] = useReducer(issueReducer, {
+        fact: null,
+        associatoins: new Array<IAssociation>(ASSOCIATIONS_COUNT)
+    });
 
     const setFact = (fact: string) => {
         dispatch({type: IssueActionType.SET_FACT, word: fact, index: 0, level: 0});
