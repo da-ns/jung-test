@@ -19,12 +19,11 @@ const Schema = () => {
         const words = getLevelItems(level);
 
         return (
-            <>
-                {words.map((word) => {
-                    return <Highlight>{word}</Highlight>
+            <div className={"flex flex-col h-full justify-around px-4"}>
+                {words.map((word, index) => {
+                    return <Highlight key={index}>{word}</Highlight>
                 })}
-
-            </>
+            </div>
         )
     };
 
@@ -36,24 +35,26 @@ const Schema = () => {
 
     return (
         <>
-            <div className={"text-2xl text-center mb-10"}>
+            <div className={"text-center-center text-2xl"}>
                 Schema of associative series on request:
-                <br/><Highlight>{issue.fact}</Highlight>
             </div>
-            <div className={"flex mb-10"}>
-                <div className={"flex flex-col justify-around px-4 border-r-2"}>
+
+            <div className={"text-center text-3xl font-bold mt-4 mb-10"}>{issue.fact}</div>
+
+            <div className={"flex mb-10 justify-center"}>
+                <div className={"border-r-2"}>
                     {printLevelItems(0)}
                 </div>
-                <div className={"flex flex-col justify-around px-4 border-r-2"}>
+                <div className={"border-r-2"}>
                     {printLevelItems(1)}
                 </div>
-                <div className={"flex flex-col justify-around px-4 border-r-2"}>
+                <div className={"border-r-2"}>
                     {printLevelItems(2)}
                 </div>
-                <div className={"flex flex-col justify-around px-4 border-r-2"}>
+                <div className={"border-r-2"}>
                     {printLevelItems(3)}
                 </div>
-                <div className={"flex flex-col justify-around px-4"}>
+                <div className={"font-bold"}>
                     {printLevelItems(4)}
                 </div>
             </div>

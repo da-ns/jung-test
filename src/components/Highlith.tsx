@@ -7,9 +7,10 @@ type HighlightProps = {
 
 const Highlight = ({children, className} : HighlightProps) => {
     return (
-        <span className={"bg-indigo-50 " + className}>
+        <div className={"w-min bg-indigo-50 border rounded-lg border-indigo-200 p-1 mb-2 text-center "
+            + (className === undefined ? "" : className)}>
             {children}
-        </span>
+        </div>
     )
 };
 
