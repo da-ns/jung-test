@@ -13,6 +13,9 @@
     "url": "git+https://github.com/da-ns/jung-test.git"
   },
   "keywords": [
+    "react",
+    "typescript",
+    "tailwindcss",
     "psy",
     "test",
     "jung",
