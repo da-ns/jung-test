@@ -1,6 +1,6 @@
 import TextInput from "../TextInput";
 import useIssue from "../../context/IssueContext";
-import {ChangeEvent, useEffect, useLayoutEffect, useMemo, useState} from "react";
+import {ChangeEvent, useEffect, useMemo, useState} from "react";
 import Button from "../Button.tsx";
 import {useNavigate} from "react-router-dom";
 import {IssueContextType} from "../../@types/IssueContextType";
@@ -17,7 +17,6 @@ const Association = () => {
     const navigate = useNavigate();
 
     const handleChangeWord = (event: ChangeEvent<HTMLInputElement>) : void => {
-        console.log(issue);
         setWord((event.target as HTMLInputElement).value);
     };
 
@@ -37,13 +36,8 @@ const Association = () => {
     };
 
     useEffect(() => {
-        console.log("useEffect");
         updateIndex();
         setWord("");
-    }, [issue]);
-
-    useLayoutEffect(() => {
-        console.log("useLayoutEffect");
     }, [issue]);
 
     const findFreeIndex = (): number | null => {
@@ -81,26 +75,22 @@ const Association = () => {
             return;
         }
 
-        console.log("freeIndex = " + freeIndex);
         setIndex(freeIndex);
 
         if (freeIndex < 16) {
             setTask(issue.fact);
         } else {
             const level: number = calculateLevel(freeIndex);
-            console.log("level = " + level);
+
             const beforeLevelItems: IAssociation[] = issue
                 .associatoins
                 .filter((item: IAssociation) => item.level == (level - 1));
 
-            console.log(beforeLevelItems);
 
             const currentLevelLength: number = issue
                 .associatoins
                 .filter((item: IAssociation) => item.level == level)
                 .length;
-
-            console.log("currentLevelLength = " + currentLevelLength);
 
             const newTask: string = beforeLevelItems[2 * currentLevelLength].word + " " +
                 beforeLevelItems[2 * currentLevelLength + 1].word;
