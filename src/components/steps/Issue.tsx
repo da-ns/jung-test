@@ -1,21 +1,22 @@
 import TextInput from "../TextInput";
 import useIssue from "../../context/IssueContext";
 import Button from "../Button.tsx";
-import {ChangeEvent, useEffect} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {IssueContextType} from "../../@types/IssueContextType";
 
 const Issue = () => {
     const navigate = useNavigate();
     const { issue, setFact }: IssueContextType = useIssue();
+    const [ word, setWord ] = useState("");
 
     const handleChangeFact = (event: ChangeEvent<HTMLInputElement>) : void => {
-        issue.fact = (event.target as HTMLInputElement).value;
+        setWord((event.target as HTMLInputElement).value);
     };
 
     const handleClickNext = () => {
-        if (issue.fact != null) {
-            setFact(issue.fact);
+        if (word !== "") {
+            setFact(word);
         }
     };
 
@@ -24,7 +25,7 @@ const Issue = () => {
     };
 
     useEffect(() => {
-        if (issue.fact != null) {
+        if (word !== "") {
             navigate("/test/association");
         }
     }, [issue]);
@@ -38,7 +39,7 @@ const Issue = () => {
             </p>
 
             <TextInput
-                value={issue.fact}
+                value={word}
                 autofocus={true}
                 onChange={handleChangeFact}
                 onEnter={handleEnter}
