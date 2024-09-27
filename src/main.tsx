@@ -12,7 +12,6 @@ import Home from "./pages/Home.tsx";
 import Start from "./components/steps/Start.tsx";
 import Issue from "./components/steps/Issue.tsx";
 import Association from "./components/steps/Association.tsx";
-import Prepare from "./components/steps/Prepare.tsx";
 import Result from "./components/steps/Result.tsx";
 import Schema from "./components/steps/Schema.tsx";
 
@@ -45,10 +44,6 @@ if (container != null) {
                         {
                             path: "issue",
                             element: <Issue/>
-                        },
-                        {
-                            path: "prepare",
-                            element: <Prepare/>
                         },
                         {
                             path: "association",
