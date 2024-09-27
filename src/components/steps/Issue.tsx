@@ -19,6 +19,10 @@ const Issue = () => {
         }
     };
 
+    const handleEnter = () : void => {
+        handleClickNext();
+    };
+
     useEffect(() => {
         if (issue.fact != null) {
             navigate("/test/association");
@@ -35,7 +39,9 @@ const Issue = () => {
 
             <TextInput
                 value={issue.fact}
+                autofocus={true}
                 onChange={handleChangeFact}
+                onEnter={handleEnter}
                 placeholder="For example, “relationship with mom”, “job search”, “fatigue”..."/>
 
             <div className="flex m-10 justify-center">

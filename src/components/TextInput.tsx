@@ -9,8 +9,6 @@ type TextInputProps = {
 }
 
 const TextInput = ({value, placeholder, autofocus = false, onChange, onEnter} : TextInputProps) => {
-    console.log("text input render");
-
     const inputRef = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
 
     const handleKeyDown: KeyboardEventHandler<HTMLInputElement> | undefined = (event: KeyboardEvent) => {
