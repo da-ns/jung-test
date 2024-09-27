@@ -118,7 +118,7 @@ const Result = () => {
 
             <div className="flex m-10 justify-center">
                 <SecondaryButtonLink className={"mr-2"} to={"/test/schema"}>Schema</SecondaryButtonLink>
-                <ButtonLink to={"/test/issue"}>Start again</ButtonLink>
+                <ButtonLink to={"/test"}>Start again</ButtonLink>
             </div>
         </>
     )
