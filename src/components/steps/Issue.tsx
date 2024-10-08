@@ -4,11 +4,20 @@ import Button from "../Button.tsx";
 import {ChangeEvent, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {IssueContextType} from "../../@types/IssueContextType";
+import {useTranslation} from "react-i18next";
+import parse from "html-react-parser";
 
 const Issue = () => {
     const navigate = useNavigate();
     const { issue, setFact }: IssueContextType = useIssue();
     const [ word, setWord ] = useState("");
+    const { t } = useTranslation();
+
+    const m = {
+        message: t("test.issue.message"),
+        example: t("test.issue.example"),
+        next: t("test.issue.next"),
+    };
 
     const handleChangeFact = (event: ChangeEvent<HTMLInputElement>) : void => {
         setWord((event.target as HTMLInputElement).value);
@@ -33,9 +42,7 @@ const Issue = () => {
     return (
         <>
             <p className="text-xl text-center mb-4">
-                Great! The first step is to formulate the problem.
-                <br/>Think about a topic that worries you and give it
-                a simple formulation consisting of a minimum of words.
+                {parse(m.message)}
             </p>
 
             <TextInput
@@ -43,10 +50,10 @@ const Issue = () => {
                 autofocus={true}
                 onChange={handleChangeFact}
                 onEnter={handleEnter}
-                placeholder="For example, “relationship with mom”, “job search”, “fatigue”..."/>
+                placeholder={m.example}/>
 
             <div className="flex m-10 justify-center">
-                <Button onClick={handleClickNext}>Next</Button>
+                <Button onClick={handleClickNext}>{m.next}</Button>
             </div>
         </>
     )

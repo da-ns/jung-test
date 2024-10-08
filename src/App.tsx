@@ -1,6 +1,7 @@
 import {Outlet} from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Logo from "./components/Logo.tsx";
+import LanguageSelector from "./components/LanguageSelector.tsx";
 
 const App = () => {
     return (
@@ -8,6 +9,8 @@ const App = () => {
             <Logo size={32} className="m-4"/>
 
             <Navigation/>
+
+            <LanguageSelector />
 
             <div className="flex-grow mt-10">
                 <Outlet />

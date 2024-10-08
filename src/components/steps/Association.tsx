@@ -5,6 +5,7 @@ import Button from "../Button.tsx";
 import {useNavigate} from "react-router-dom";
 import {IssueContextType} from "../../@types/IssueContextType";
 import {IAssociation} from "../../@types/IAssociation";
+import {useTranslation} from "react-i18next";
 
 const Association = () => {
     const ASSOCIATIONS_COUNT = 31;
@@ -15,6 +16,13 @@ const Association = () => {
     const [ word, setWord ] = useState("");
     const { issue, setAssociation }: IssueContextType = useIssue();
     const navigate = useNavigate();
+    const { t } = useTranslation();
+
+    const m = {
+        numberSymbol: t("test.association.numberSymbol"),
+        hint: t("test.association.hint"),
+        next: t("test.association.next"),
+    };
 
     const handleChangeWord = (event: ChangeEvent<HTMLInputElement>) : void => {
         setWord((event.target as HTMLInputElement).value);
@@ -101,13 +109,13 @@ const Association = () => {
     };
 
     const associationNumber = useMemo(() => {
-            return index < FIRST_LEVEL_ASSOCIATIONS_COUNT ? "#" + (index + 1) : "";
+            return index < FIRST_LEVEL_ASSOCIATIONS_COUNT ? m.numberSymbol + (index + 1) : "";
         }, [index]);
 
     return (
         <>
             <p className="text-xl text-center mb-4">
-                Come up with an association {associationNumber} for:
+                {t("test.association.message",  { associationNumber: associationNumber })}
             </p>
 
             <div className="text-3xl text-center text-indigo-500 mb-6 lowercase">{task}</div>
@@ -117,10 +125,10 @@ const Association = () => {
                 autofocus={true}
                 onChange={handleChangeWord}
                 onEnter={handleEnter}
-                placeholder="Your association..."/>
+                placeholder={m.hint}/>
 
             <div className="flex m-10 justify-center">
-                <Button onClick={handleClickNext}>Next</Button>
+                <Button onClick={handleClickNext}>{m.next}</Button>
             </div>
         </>
     )
