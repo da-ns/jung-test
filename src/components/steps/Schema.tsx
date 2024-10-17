@@ -4,6 +4,7 @@ import {ReactNode, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import Highlight from "../Highlith.tsx";
 import {useTranslation} from "react-i18next";
+import parse from "html-react-parser";
 
 const Schema = () => {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Schema = () => {
     const { t } = useTranslation();
 
     const m = {
-        title: t("test.schema.title")
+        title: parse(t("test.schema.title"))
     };
 
     const getLevelItems = (level: number) : string[] => {
@@ -47,7 +48,7 @@ const Schema = () => {
 
             <div className={"text-center text-3xl font-bold mt-4 mb-10"}>{issue.fact}</div>
 
-            <div className={"flex mb-10 justify-center"}>
+            <div className={"flex mb-10"}>
                 <div className={"border-r-2"}>
                     {printLevelItems(0)}
                 </div>

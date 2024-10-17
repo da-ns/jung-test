@@ -3,19 +3,20 @@ import HorizontalLine from "../components/HorizontalLine.tsx";
 import Header from "../components/Header.tsx";
 import "./../i18n.ts";
 import { useTranslation } from "react-i18next";
+import parse from "html-react-parser";
 
 const Home = () => {
     const { t } = useTranslation();
 
     const m = {
-        title: t("home.title"),
-        subtitle: t("home.subtitle"),
-        run: t("navigation.run"),
+        title: parse(t("home.title")),
+        subtitle: parse(t("home.subtitle")),
+        run: parse(t("navigation.run")),
     };
 
     return(
         <div className="max-w-prose h-full flex flex-col justify-center">
-            <div className="text-5xl">{m.title}</div>
+            <div className="text-5xl text-center break-words">{m.title}</div>
             <HorizontalLine />
             <Header>{m.subtitle}</Header>
 

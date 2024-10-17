@@ -13,7 +13,7 @@ const Start = () => {
 
     const m = {
         message: t("test.start.message"),
-        ready: t("test.start.ready"),
+        ready: parse(t("test.start.ready")),
     };
 
     const handleClickReady = () => {

@@ -12,7 +12,7 @@ const App = () => {
 
             <LanguageSelector />
 
-            <div className="flex-grow mt-10">
+            <div className="flex-grow mt-10 mx-6">
                 <Outlet />
             </div>
 

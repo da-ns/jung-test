@@ -34,7 +34,7 @@ const Result = () => {
         fiveLayerDescription2: t("test.result.five-layer-description[2]"),
         fiveLayerDescription3: t("test.result.five-layer-description[3]"),
         schema: t("test.result.schema"),
-        startAgain: t("test.result.start-again")
+        startAgain: parse(t("test.result.start-again")),
     };
 
     const getLevelItems = (level: number) : string[] => {
@@ -111,7 +111,7 @@ const Result = () => {
 
             <p className="mb-4">{m.fiveLayerDescription0}</p>
 
-            <div className={"flex justify-center text-4xl mb-4"}>
+            <div className={"flex flex-wrap justify-center text-4xl mb-4"}>
                 <Highlight>{issue.fact}</Highlight>&nbsp;&rarr;&nbsp;<Highlight>{getKey()}</Highlight>
             </div>
 
