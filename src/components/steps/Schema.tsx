@@ -3,15 +3,21 @@ import useIssue from "../../context/IssueContext.tsx";
 import {ReactNode, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import Highlight from "../Highlith.tsx";
+import {useTranslation} from "react-i18next";
 
 const Schema = () => {
     const navigate = useNavigate();
     const { issue }: IssueContextType = useIssue();
+    const { t } = useTranslation();
+
+    const m = {
+        title: t("test.schema.title")
+    };
 
     const getLevelItems = (level: number) : string[] => {
         return issue
             .associatoins
-            .filter((association) =>  association.level == level)
+            .filter((association) => association.level == level)
             .map((association) => association.word);
     }
 
@@ -36,7 +42,7 @@ const Schema = () => {
     return (
         <>
             <div className={"text-center text-2xl"}>
-                Schema of associative series on request:
+                {m.title}
             </div>
 
             <div className={"text-center text-3xl font-bold mt-4 mb-10"}>{issue.fact}</div>

@@ -7,10 +7,35 @@ import SecondaryButtonLink from "../SecondaryButtonLink.tsx";
 import Highlight from "../Highlith.tsx";
 import TopHeader from "../TopHeader.tsx";
 import SecondHeader from "../SecondHeader.tsx";
+import {useTranslation} from "react-i18next";
+import parse from "html-react-parser";
 
 const Result = () => {
     const navigate = useNavigate();
     const { issue }: IssueContextType = useIssue();
+    const { t } = useTranslation();
+
+    const m = {
+        message: t("test.result.message"),
+        title: t("test.result.title"),
+        description: t("test.result.description"),
+        firstLayerTitle: t("test.result.first-layer-title"),
+        firstLayerDescription: t("test.result.first-layer-description"),
+        secondLayerTitle: t("test.result.second-layer-title"),
+        secondLayerDescription0: t("test.result.second-layer-description[0]"),
+        secondLayerDescription1: t("test.result.second-layer-description[1]"),
+        thirdLayerTitle: t("test.result.third-layer-title"),
+        thirdLayerDescription: t("test.result.third-layer-description"),
+        fourthLayerTitle: t("test.result.fourth-layer-title"),
+        fourthLayerDescription: t("test.result.fourth-layer-description"),
+        fiveLayerTitle: t("test.result.five-layer-title"),
+        fiveLayerDescription0: t("test.result.five-layer-description[0]"),
+        fiveLayerDescription1: t("test.result.five-layer-description[1]"),
+        fiveLayerDescription2: t("test.result.five-layer-description[2]"),
+        fiveLayerDescription3: t("test.result.five-layer-description[3]"),
+        schema: t("test.result.schema"),
+        startAgain: t("test.result.start-again")
+    };
 
     const getLevelItems = (level: number) : string[] => {
         return issue
@@ -46,79 +71,59 @@ const Result = () => {
 
     return (
         <>
-            <p className="text-xl text-center">Congratulations! The work of filling out the associations
-                has been completed. Now let's see what your subconscious mind thinks
-                about the subject of the request.</p>
+            <p className="text-xl text-center">{m.message}</p>
 
             <div className={"flex justify-center my-4"}>
                 <img src={"/thinking.png"} width={90} height={90} alt={""}/>
             </div>
 
-            <TopHeader>Your results</TopHeader>
+            <TopHeader>{m.title}</TopHeader>
 
-            <p className="mb-4">When analyzing the results, it is best to contact a specialist, but let’s try to do it ourselves.</p>
+            <p className="mb-4">{m.description}</p>
 
-            <SecondHeader>The first layer of associations: the level of reality</SecondHeader>
+            <SecondHeader>{m.firstLayerTitle}</SecondHeader>
 
             {printLevelItems(0)}
 
-            <p className="mb-4">Here you can analyze how much the written words are connected to the real world
-                and reflect your real thoughts and ideas.</p>
+            <p className="mb-4">{m.firstLayerDescription}</p>
 
-            <SecondHeader>The second layer of associations: the level of the mind</SecondHeader>
+            <SecondHeader>{m.secondLayerTitle}</SecondHeader>
 
             {printLevelItems(1)}
 
-            <p className="mb-4">It becomes clear to what extent your logical thoughts,
-                rational thinking and ability to analyze are reflected.</p>
+            <p className="mb-4">{m.secondLayerDescription0}</p>
 
-            <p className="mb-4">If most of the associations in this layer are related to logic and rationality, you have a good
-                level of intelligence and analytical skills.</p>
+            <p className="mb-4">{m.secondLayerDescription1}</p>
 
-            <SecondHeader>Third layer: level of feelings</SecondHeader>
+            <SecondHeader>{m.thirdLayerTitle}</SecondHeader>
 
             {printLevelItems(2)}
 
-            <p className="mb-4">Here you can also analyze the display of
-                your emotional state and mood. If most of the associations in this layer are related to emotions,
-                you have high emotional responsiveness and sensitivity.</p>
+            <p className="mb-4">{m.thirdLayerDescription}</p>
 
-            <SecondHeader>The fourth layer of associations: the root of the problem</SecondHeader>
+            <SecondHeader>{m.fourthLayerTitle}</SecondHeader>
 
             {printLevelItems(3)}
 
-            <p className="mb-4">It is important to understand the reason why this image was predominantly formed.
-                Perhaps it is a true desire or goal, or a subconscious fear, some internal conflict,
-                sometimes an attitude or difficulty that annoys you, or a task that you cannot cope with.</p>
+            <p className="mb-4">{m.fourthLayerDescription}</p>
 
-            <SecondHeader>The last layer of associations: the key word</SecondHeader>
+            <SecondHeader>{m.fiveLayerTitle}</SecondHeader>
 
-            <p className="mb-4">The last layer is the key to understanding your feelings, thoughts and behavior regarding the subject
-                of the request. So, here is this query-key pair:</p>
+            <p className="mb-4">{m.fiveLayerDescription0}</p>
 
             <div className={"flex justify-center text-4xl mb-4"}>
                 <Highlight>{issue.fact}</Highlight>&nbsp;&rarr;&nbsp;<Highlight>{getKey()}</Highlight>
             </div>
 
-            <p className="mb-4">Look at them and try to understand the relationship between these concepts.
-                You may discover something new or pay closer attention to something you already
-                knew but avoided connecting with.</p>
+            <p className="mb-4">{m.fiveLayerDescription1}</p>
 
-            <p className="mb-4">By analyzing the test results, you can gain a broader understanding of ourselves, your thoughts,
-                emotions and intuition. It will help you uncover hidden aspects of your personality, understand
-                the reasons for your reactions and behavior, and find solutions to problems or challenges you face.</p>
+            <p className="mb-4">{m.fiveLayerDescription2}</p>
 
-            <p className="mb-4">Additionally, you can answer the following questions:</p>
-
-            <p className="mb-4">- How does the key word make you feel?</p>
-
-            <p className="mb-4">- What thoughts did you have when you saw the key word?</p>
-
-            <p className="mb-4">- What did you want to do about this?</p>
+            <p className="mb-4">{parse(m.fiveLayerDescription3)}</p>
 
             <div className="flex m-10 justify-center">
-                <SecondaryButtonLink className={"mr-2"} to={"/test/schema"}>Schema</SecondaryButtonLink>
-                <ButtonLink to={"/test"}>Start again</ButtonLink>
+                <SecondaryButtonLink className={"mr-2"} to={"/test/schema"}>{m.schema}</SecondaryButtonLink>
+                <ButtonLink to={"/test"}>{m.startAgain}</ButtonLink>
             </div>
         </>
     )

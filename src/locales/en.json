@@ -30,5 +30,28 @@
     "test.association.message": "Come up with an association {{associationNumber}} for:",
     "test.association.numberSymbol": "#",
     "test.association.hint": "Your association...",
-    "test.association.next": "Next"
+    "test.association.next": "Next",
+
+    "test.result.message": "Congratulations! The work of filling out the associations has been completed. Now let's see what your subconscious mind thinks about the subject of the request.",
+    "test.result.title": "Your results",
+    "test.result.description": "When analyzing the results, it is best to contact a specialist, but let’s try to do it ourselves.",
+    "test.result.first-layer-title": "The first layer of associations: the level of reality",
+    "test.result.first-layer-description": "Here you can analyze how much the written words are connected to the real world and reflect your real thoughts and ideas.",
+    "test.result.second-layer-title": "The second layer of associations: the level of the mind",
+    "test.result.second-layer-description[0]": "It becomes clear to what extent your logical thoughts, rational thinking and ability to analyze are reflected.",
+    "test.result.second-layer-description[1]": "If most of the associations in this layer are related to logic and rationality, you have a good level of intelligence and analytical skills.",
+    "test.result.third-layer-title": "Third layer: level of feelings",
+    "test.result.third-layer-description": "Here you can also analyze the display of your emotional state and mood. If most of the associations in this layer are related to emotions, you have high emotional responsiveness and sensitivity.",
+    "test.result.fourth-layer-title": "The fourth layer of associations: the root of the problem",
+    "test.result.fourth-layer-description": "It is important to understand the reason why this image was predominantly formed. Perhaps it is a true desire or goal, or a subconscious fear, some internal conflict, sometimes an attitude or difficulty that annoys you, or a task that you cannot cope with.",
+    "test.result.five-layer-title": "The last layer of associations: the key word",
+    "test.result.five-layer-description[0]": "The last layer is the key to understanding your feelings, thoughts and behavior regarding the subject of the request. So, here is this query-key pair:",
+    "test.result.five-layer-description[1]": "Look at them and try to understand the relationship between these concepts. You may discover something new or pay closer attention to something you already knew but avoided connecting with.",
+    "test.result.five-layer-description[2]": "By analyzing the test results, you can gain a broader understanding of ourselves, your thoughts, emotions and intuition. It will help you uncover hidden aspects of your personality, understand the reasons for your reactions and behavior, and find solutions to problems or challenges you face.",
+    "test.result.five-layer-description[3]": "Additionally, you can answer the following questions:<br /><br />- How does the key word make you feel?<br /><br />- What thoughts did you have when you saw the key word?<br /><br />- What did you want to do about this?",
+
+    "test.result.schema": "Schema",
+    "test.result.start-again": "Start again",
+
+    "test.schema.title": "Schema of associative series on request:"
 }
