@@ -1,7 +1,8 @@
 import {IIssue} from "../@types/IIssue";
-import {createContext, ReactNode, useContext, useReducer} from "react";
+import {createContext, ReactNode, useContext, useEffect, useReducer} from "react";
 import {IAssociation} from "../@types/IAssociation";
 import {IssueContextType} from "../@types/IssueContextType";
+import {useLocalStorage} from "@uidotdev/usehooks";
 
 const ASSOCIATIONS_COUNT = 31;
 
@@ -58,10 +59,12 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
         }
     };
 
-    const [issue, dispatch] = useReducer(issueReducer, {
+    const [localStorageIssue, setLocalStorageIssue] = useLocalStorage<IIssue>("issue", {
         fact: null,
         associatoins: new Array<IAssociation>(ASSOCIATIONS_COUNT)
     });
+
+    const [issue, dispatch] = useReducer(issueReducer, localStorageIssue);
 
     const setFact = (fact: string) => {
         dispatch({type: IssueActionType.SET_FACT, word: fact, index: 0, level: 0});
@@ -74,6 +77,10 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
     const reset = () => {
         dispatch({type: IssueActionType.RESET, word: "", index: 0, level: 0});
     };
+
+    useEffect(() => {
+        setLocalStorageIssue(issue);
+    }, [issue]);
 
     return (
         <IssueContext.Provider value={{ issue, setFact, setAssociation, reset }}>

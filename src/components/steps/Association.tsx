@@ -48,6 +48,10 @@ const Association = () => {
         setWord("");
     }, [issue]);
 
+    useEffect(() => {
+        updateIndex();
+    }, []);
+
     const findFreeIndex = (): number | null => {
         const nextFreeIndex: number = issue
             .associatoins
@@ -93,12 +97,12 @@ const Association = () => {
 
             const beforeLevelItems: IAssociation[] = issue
                 .associatoins
-                .filter((item: IAssociation) => item.level == (level - 1));
+                .filter((item: IAssociation) => item && item.level == (level - 1));
 
 
             const currentLevelLength: number = issue
                 .associatoins
-                .filter((item: IAssociation) => item.level == level)
+                .filter((item: IAssociation) => item && item.level == level)
                 .length;
 
             const newTask: string = beforeLevelItems[2 * currentLevelLength].word + " " +
