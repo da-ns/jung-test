@@ -16,7 +16,7 @@ const LanguageSelector = () => {
     };
 
     return (
-        <p className="mt-3 flex gap-3 text-xs text-center text-[#8d96a7]">
+        <div className="mt-3 flex gap-3 text-xs text-center text-[#8d96a7]">
             <button type="button" onClick={() => changeLanguage("ru")}>
                 {m.ru}
             </button>
@@ -24,7 +24,7 @@ const LanguageSelector = () => {
             <button type="button" onClick={() => changeLanguage("en")}>
                 {m.en}
             </button>
-        </p>
+        </div>
     );
 };
 
