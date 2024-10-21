@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import Highlight from "../Highlith.tsx";
 import {useTranslation} from "react-i18next";
 import parse from "html-react-parser";
+import {IAssociation} from "../../@types/IAssociation";
 
 const Schema = () => {
     const navigate = useNavigate();
@@ -15,20 +16,28 @@ const Schema = () => {
         title: parse(t("test.schema.title"))
     };
 
-    const getLevelItems = (level: number) : string[] => {
+    const getLevelItems = (level: number) : IAssociation[] => {
         return issue
             .associatoins
-            .filter((association) => association.level == level)
-            .map((association) => association.word);
+            .filter((association) => association.level == level);
+    }
+
+    const toSeconds = (time: number) : number => {
+        return time / 1000;
     }
 
     const printLevelItems = (level: number) : ReactNode => {
-        const words = getLevelItems(level);
+        const associations = getLevelItems(level);
 
         return (
             <div className={"flex flex-col h-full justify-around px-4 items-center"}>
-                {words.map((word, index) => {
-                    return <Highlight key={index}>{word}</Highlight>
+                {associations.map((association, index) => {
+                    return (
+                        <Highlight key={index}>
+                            {association.word}
+                            <sup>{toSeconds(association.time)}&nbsp;с</sup>
+                        </Highlight>
+                    )
                 })}
             </div>
         )

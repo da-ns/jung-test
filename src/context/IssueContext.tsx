@@ -27,11 +27,12 @@ export interface IssueAction {
     word: string;
     index: number;
     level: number;
+    time: number;
 }
 
 export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | ReactNode[]}) => {
     const issueReducer = (state: IIssue, action: IssueAction) => {
-        const { type, word, index, level } = action;
+        const { type, word, index, level, time } = action;
 
         switch (type) {
             case IssueActionType.SET_FACT:
@@ -42,6 +43,7 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
             case IssueActionType.SET_ASSOCIATION:
                 state.associatoins[index] = {
                     word: word,
+                    time: time,
                     level: level,
                 } as IAssociation;
 
@@ -67,15 +69,15 @@ export const IssueProvider = (prop: {value?: IIssue, children: ReactNode | React
     const [issue, dispatch] = useReducer(issueReducer, localStorageIssue);
 
     const setFact = (fact: string) => {
-        dispatch({type: IssueActionType.SET_FACT, word: fact, index: 0, level: 0});
+        dispatch({type: IssueActionType.SET_FACT, word: fact, index: 0, level: 0, time: 0});
     };
 
-    const setAssociation = (association: string, index: number, level: number) => {
-        dispatch({type: IssueActionType.SET_ASSOCIATION, word: association, index: index, level: level});
+    const setAssociation = (association: string, index: number, level: number, time: number) => {
+        dispatch({type: IssueActionType.SET_ASSOCIATION, word: association, index: index, level: level, time: time});
     };
 
     const reset = () => {
-        dispatch({type: IssueActionType.RESET, word: "", index: 0, level: 0});
+        dispatch({type: IssueActionType.RESET, word: "", index: 0, level: 0, time: 0});
     };
 
     useEffect(() => {
