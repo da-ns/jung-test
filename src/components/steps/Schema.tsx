@@ -54,7 +54,6 @@ const Schema = () => {
 
     const printLevelItems = (level: number) : ReactNode => {
         const associations = getLevelItems(level);
-        console.log(stat);
 
         return (
             <div className={"flex flex-col h-full justify-around px-4 items-center"}>
